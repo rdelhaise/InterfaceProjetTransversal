@@ -1,6 +1,11 @@
 package com.epsi.book.application;
 import java.util.ArrayList;
 
+import com.epsi.book.application.exception.AllBooksAlreadyReturnedException;
+import com.epsi.book.application.exception.BookNotFoundException;
+import com.epsi.book.application.exception.UnavailableBookException;
+import com.epsi.book.application.metier.Book;
+
 public interface InterfaceBook {
 
 	public Book getBook(String id);
