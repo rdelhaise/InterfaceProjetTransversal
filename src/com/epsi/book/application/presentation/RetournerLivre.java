@@ -1,13 +1,15 @@
 package com.epsi.book.application.presentation;
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
@@ -15,12 +17,10 @@ import com.epsi.book.application.exception.AllBooksAlreadyReturnedException;
 import com.epsi.book.application.exception.BookNotFoundException;
 import com.epsi.book.application.traitement.Bibliotheque;
 
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 public class RetournerLivre extends JFrame {
+
+	/** UID */
+	private static final long serialVersionUID = -3355359691592522777L;
 
 	private JPanel contentPane;
 	private JTextField tfId;

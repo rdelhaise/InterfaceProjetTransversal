@@ -1,28 +1,22 @@
 package com.epsi.book.application.DAO;
 
-import java.awt.EventQueue;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
-import java.util.Iterator;
-import java.util.Scanner;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.epsi.book.application.presentation.Accueil;
-
 public class GoogleBookDAO {
 
 	public JSONObject getData(String filter, String data) throws MalformedURLException, IOException, JSONException {
 		data = URLEncoder.encode(data, "UTF-8");
-        URL url = new URL("http://localhost:8080/library/findBy"+ filter + "/"+data);
+        URL url = new URL("http://localhost:8090/library/findBy"+ filter + '/' + data);
         URLConnection request = url.openConnection();
         request.connect();
 
