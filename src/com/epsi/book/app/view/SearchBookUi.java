@@ -1,4 +1,4 @@
-package com.epsi.book.application.presentation;
+package com.epsi.book.app.view;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.io.FileInputStream;
@@ -10,8 +10,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.epsi.book.application.metier.Book;
-import com.epsi.book.application.traitement.Bibliotheque;
+import com.epsi.book.app.action.LibraryBook;
+import com.epsi.book.app.work.Book;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -24,7 +24,7 @@ import javax.swing.JTextPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class RechercheLivre extends JFrame {
+public class SearchBookUi extends JFrame {
 
 	private JPanel contentPane;
 	private JTextPane txtLivre;
@@ -37,7 +37,7 @@ public class RechercheLivre extends JFrame {
 
 
 
-	public RechercheLivre() throws ClassNotFoundException {
+	public SearchBookUi() throws ClassNotFoundException {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -72,7 +72,7 @@ public class RechercheLivre extends JFrame {
 					if(tfId.getText().length() !=0 ) {
 					
 							String id = tfId.getText();	
-							Bibliotheque biblio= Bibliotheque.getInstance();
+							LibraryBook biblio= LibraryBook.getInstance();
 							Book b =biblio.getBook(id);
 							if(b != null) {
 								txtLivre.setText(b.toString());
@@ -92,7 +92,7 @@ public class RechercheLivre extends JFrame {
 		JButton btnAnnuler = new JButton("Annuler");
 		btnAnnuler.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Accueil fen= new Accueil();
+				HomeUi fen= new HomeUi();
 				fen.setVisible(true);
 				setVisible(false);
 			}

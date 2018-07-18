@@ -1,4 +1,4 @@
-package com.epsi.book.application.presentation ;
+package com.epsi.book.app.view ;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -7,9 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.epsi.book.application.metier.Auteur;
-import com.epsi.book.application.metier.Book;
-import com.epsi.book.application.traitement.Bibliotheque;
+import com.epsi.book.app.action.LibraryBook;
+import com.epsi.book.app.work.Author;
+import com.epsi.book.app.work.Book;
 
 import javax.swing.JTextField;
 import java.awt.Color;
@@ -28,12 +28,12 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class AjouterLivre extends JFrame {
+public class AddBookUi extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField tfTitre;
 	private JComboBox comboBoxAuteur;
-	private static Auteur a1,a2,a3,a4,a5;
+	private static Author a1,a2,a3,a4,a5;
 	private JTextField tfAnnee;
 	private JTextField tfGenre;
 	private JTextField tfId;
@@ -43,13 +43,13 @@ public class AjouterLivre extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AjouterLivre() {
+	public AddBookUi() {
 		
-		 a1= new Auteur("BACHABI","Bassam");
-		 a2= new Auteur("Sinda","Singor");
-		 a3= new Auteur("Marc","Arthu");
-		 a4= new Auteur("Stéphane","Anthoine");
-		 a5= new Auteur("Kaaris","Dozo");
+		 a1= new Author("BACHABI","Bassam");
+		 a2= new Author("Sinda","Singor");
+		 a3= new Author("Marc","Arthu");
+		 a4= new Author("Stéphane","Anthoine");
+		 a5= new Author("Kaaris","Dozo");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 562, 412);
@@ -113,11 +113,11 @@ public class AjouterLivre extends JFrame {
 					int annee= Integer.parseInt(tfAnnee.getText());
 					String genre= tfGenre.getText();
 					String isbn= tfIsbn.getText();
-					Auteur auteur= (Auteur) comboBoxAuteur.getSelectedItem();
+					Author auteur= (Author) comboBoxAuteur.getSelectedItem();
 					
 					Book bk = new Book(id, isbn, titre,genre, auteur, annee );
 					
-					Bibliotheque biblio= Bibliotheque.getInstance();
+					LibraryBook biblio= LibraryBook.getInstance();
 					biblio.addBookWithBook(bk);
 
 					JOptionPane.showMessageDialog(null, "Nouveau livre ajouté avec succès");
@@ -126,7 +126,7 @@ public class AjouterLivre extends JFrame {
 						System.out.println(b.toString());
 					}
 					
-					Accueil fen= new Accueil();
+					HomeUi fen= new HomeUi();
 					fen.setVisible(true);
 					setVisible(false);
 							
@@ -144,7 +144,7 @@ public class AjouterLivre extends JFrame {
 		JButton btnAnnuler = new JButton("ANNULER");
 		btnAnnuler.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Accueil fen= new Accueil();
+				HomeUi fen= new HomeUi();
 				fen.setVisible(true);
 				setVisible(false);
 			}

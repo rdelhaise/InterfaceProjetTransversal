@@ -1,30 +1,30 @@
-package com.epsi.book.application.traitement;
+package com.epsi.book.app.action;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-import com.epsi.book.application.InterfaceBook;
-import com.epsi.book.application.exception.AllBooksAlreadyReturnedException;
-import com.epsi.book.application.exception.BookNotFoundException;
-import com.epsi.book.application.exception.UnavailableBookException;
-import com.epsi.book.application.metier.Auteur;
-import com.epsi.book.application.metier.Book;
+import com.epsi.book.app.InterfaceBook;
+import com.epsi.book.app.exception.AllBooksAlreadyReturnedException;
+import com.epsi.book.app.exception.BookNotFoundException;
+import com.epsi.book.app.exception.UnavailableBookException;
+import com.epsi.book.app.work.Author;
+import com.epsi.book.app.work.Book;
 
-public class Bibliotheque implements InterfaceBook  {
+public class LibraryBook implements InterfaceBook  {
 
 	private ArrayList<Book> books;
 	private ArrayList<BookBorrowed> booksBorrowed;
-	private static Bibliotheque instance;
+	private static LibraryBook instance;
 	
-	private  Bibliotheque() {
+	private  LibraryBook() {
 		//initialisation de l'arraylist
 		this.books = new ArrayList<>();
 		this.booksBorrowed = new ArrayList<>();
 	}
 	
-	public static Bibliotheque getInstance() {
-		if(Bibliotheque.instance == null) {
-			instance = new Bibliotheque();
+	public static LibraryBook getInstance() {
+		if(LibraryBook.instance == null) {
+			instance = new LibraryBook();
 		}
 		return instance;
 	}
@@ -77,7 +77,7 @@ public class Bibliotheque implements InterfaceBook  {
 	public String addBook(String isbn) {
 		//On initialise la variable à retourner au cas ou on trouve pas l'isbn
 		String id=null;
-		Auteur a = new Auteur("BACHABI","Bassam");
+		Author a = new Author("BACHABI","Bassam");
 		Book book = new Book("2", isbn, "Romance", "Titanic",a, 1994);
 		
 		//On fait un test sur la valeur retouné par la fonction existeDeja

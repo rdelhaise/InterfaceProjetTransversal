@@ -1,26 +1,26 @@
-package com.epsi.book.application.presentation;
-import java.awt.BorderLayout;
+package com.epsi.book.app.view;
 import java.awt.Color;
-import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import com.epsi.book.application.exception.BookNotFoundException;
-import com.epsi.book.application.exception.UnavailableBookException;
-import com.epsi.book.application.traitement.Bibliotheque;
+import com.epsi.book.app.action.LibraryBook;
+import com.epsi.book.app.exception.AllBooksAlreadyReturnedException;
+import com.epsi.book.app.exception.BookNotFoundException;
 
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+public class ReturnBookUi extends JFrame {
 
-public class RetirerLivre extends JFrame {
+	/** UID */
+	private static final long serialVersionUID = -3355359691592522777L;
 
 	private JPanel contentPane;
 	private JTextField tfId;
@@ -29,7 +29,7 @@ public class RetirerLivre extends JFrame {
 
 	
 	
-	public RetirerLivre() {
+	public ReturnBookUi() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 586, 371);
@@ -38,7 +38,7 @@ public class RetirerLivre extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("RETIRER LIVRE");
+		JLabel lblNewLabel = new JLabel("RETOURNER LIVRE");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(44, 6, 438, 20);
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.BOLD, 16));
@@ -63,25 +63,25 @@ public class RetirerLivre extends JFrame {
 		contentPane.add(tfUser);
 		tfUser.setColumns(10);
 		
-		JButton btnRetirer = new JButton("Retirer");
+		JButton btnRetirer = new JButton("Retourner");
 		btnRetirer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(tfId.getText().length() != 0 && tfUser.getText().length() !=0) {
 					
 					String id = tfId.getText();
 					String user= tfUser.getText();
-					Bibliotheque biblio= Bibliotheque.getInstance();
+					LibraryBook biblio= LibraryBook.getInstance();
 					
 						try {
-							biblio.borrowBook(id, user);
-						} catch (BookNotFoundException | UnavailableBookException e1) {
+							biblio.returnBook(id, user);
+						} catch (BookNotFoundException | AllBooksAlreadyReturnedException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
 						}
-						JOptionPane.showMessageDialog(null, "Le livre a été retiré avec succès");
+						JOptionPane.showMessageDialog(null, "Le livre a été retourné avec succès");
 					
 					
-					Accueil fen= new Accueil();
+					HomeUi fen= new HomeUi();
 					fen.setVisible(true);
 					setVisible(false);
 					
@@ -97,7 +97,7 @@ public class RetirerLivre extends JFrame {
 		JButton btnAnnuler = new JButton("Annuler");
 		btnAnnuler.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Accueil fen= new Accueil();
+				HomeUi fen= new HomeUi();
 				fen.setVisible(true);
 				setVisible(false);
 			}

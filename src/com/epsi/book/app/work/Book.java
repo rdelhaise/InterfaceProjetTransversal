@@ -1,4 +1,4 @@
-package com.epsi.book.application.metier;
+package com.epsi.book.app.work;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,18 +9,17 @@ public class Book implements Serializable {
 	private String isbn;
 	private String titre;
 	private String genre;
-	private ArrayList<Auteur> Listauteur;
+	private ArrayList<Author> Listauteur;
 	private int annee;
 	private boolean isBorrowed;
 	
 	
 	//Constructeur d'un livre
-	public Book(String id, String isbn,String genre, String titre, Auteur auteur, int annee) {
-		super();
+	public Book(String id, String isbn,String genre, String titre, Author auteur, int annee) {
 		this.id = id;
 		this.isbn=isbn;
 		this.titre = titre;
-		this.Listauteur = new ArrayList<Auteur>();
+		this.Listauteur = new ArrayList<Author>();
 		this.Listauteur.add(auteur);
 		this.annee = annee;
 		this.isBorrowed = false;
@@ -28,7 +27,6 @@ public class Book implements Serializable {
 
 
 public Book() {
-		// TODO Auto-generated constructor stub
 	}
 
 
@@ -85,14 +83,14 @@ public Book() {
 
 
 //Retourne la liste des auteurs
-	public ArrayList<Auteur> getListAuteur() {
+	public ArrayList<Author> getListAuteur() {
 		return this.Listauteur;
 	}
 	
 	//Retourne un auteur du livre
-	public Auteur getAuteur(String nom, String prenom) {
-		Auteur auteur= new Auteur();
-		for (Auteur au:Listauteur) {
+	public Author getAuteur(String nom, String prenom) {
+		Author auteur= new Author();
+		for (Author au:Listauteur) {
 			if(au.getNom().equals(nom) && au.getPrenom().equals(prenom)) {
 				auteur=au;
 				break;
@@ -103,7 +101,7 @@ public Book() {
 
 
 //Ajouter un auteur
-	public void setAuteur(Auteur auteur) {
+	public void setAuteur(Author auteur) {
 		this.Listauteur.add(auteur);
 	}
 

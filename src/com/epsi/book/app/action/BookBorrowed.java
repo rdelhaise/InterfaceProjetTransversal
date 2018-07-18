@@ -1,13 +1,12 @@
-package com.epsi.book.application.traitement;
+package com.epsi.book.app.action;
 
-import com.epsi.book.application.metier.Book;
+import com.epsi.book.app.work.Book;
 
 public class BookBorrowed {
 	private Book book;
 	private String username;
 	
 	public BookBorrowed(Book book, String username) {
-		super();
 		this.book = book;
 		this.username = username;
 	}

@@ -1,4 +1,4 @@
-package com.epsi.book.application.exception;
+package com.epsi.book.app.exception;
 
 public class BookNotFoundException extends Exception {
 	

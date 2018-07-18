@@ -1,10 +1,10 @@
-package com.epsi.book.application;
+package com.epsi.book.app;
 import java.util.ArrayList;
 
-import com.epsi.book.application.exception.AllBooksAlreadyReturnedException;
-import com.epsi.book.application.exception.BookNotFoundException;
-import com.epsi.book.application.exception.UnavailableBookException;
-import com.epsi.book.application.metier.Book;
+import com.epsi.book.app.exception.AllBooksAlreadyReturnedException;
+import com.epsi.book.app.exception.BookNotFoundException;
+import com.epsi.book.app.exception.UnavailableBookException;
+import com.epsi.book.app.work.Book;
 
 public interface InterfaceBook {
 

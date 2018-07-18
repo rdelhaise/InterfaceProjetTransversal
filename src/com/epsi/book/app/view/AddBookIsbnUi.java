@@ -1,4 +1,4 @@
-package com.epsi.book.application.presentation;
+package com.epsi.book.app.view;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.epsi.book.application.traitement.Bibliotheque;
+import com.epsi.book.app.action.LibraryBook;
 
 import javax.swing.JTextField;
 import java.awt.Color;
@@ -26,14 +26,14 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
-public class AjouterLivreISBN extends JFrame {
+public class AddBookIsbnUi extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField tfIsbn;
 
 
 
-	public AjouterLivreISBN() {
+	public AddBookIsbnUi() {
 	
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,12 +71,12 @@ public class AjouterLivreISBN extends JFrame {
 					
 					
 					String isbn= tfIsbn.getText();
-					Bibliotheque biblio= Bibliotheque.getInstance();
+					LibraryBook biblio= LibraryBook.getInstance();
 					biblio.addBook(isbn);
 					
 					JOptionPane.showMessageDialog(null, "Nouveau livre ajouté avec succès");
 					
-					Accueil fen= new Accueil();
+					HomeUi fen= new HomeUi();
 					fen.setVisible(true);
 					setVisible(false);
 							
@@ -95,7 +95,7 @@ public class AjouterLivreISBN extends JFrame {
 		JButton btnAnnuler = new JButton("ANNULER");
 		btnAnnuler.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Accueil fen= new Accueil();
+				HomeUi fen= new HomeUi();
 				fen.setVisible(true);
 				setVisible(false);
 			}

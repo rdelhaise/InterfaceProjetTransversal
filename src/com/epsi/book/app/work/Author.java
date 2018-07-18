@@ -1,21 +1,18 @@
-package com.epsi.book.application.metier;
+package com.epsi.book.app.work;
 
 import java.io.Serializable;
 
-public class Auteur implements Serializable {
+public class Author implements Serializable {
 	private String nom;
 	private String prenom;
 	
 	
 	
-	public Auteur() {
-		super();
-		// TODO Auto-generated constructor stub
+	public Author() {
 	}
 
 
-	public Auteur(String nom, String prenom) {
-		super();
+	public Author(String nom, String prenom) {
 		this.nom = nom;
 		this.prenom = prenom;
 	}

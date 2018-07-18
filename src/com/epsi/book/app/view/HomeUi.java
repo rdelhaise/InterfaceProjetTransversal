@@ -1,4 +1,4 @@
-package com.epsi.book.application.presentation ;
+package com.epsi.book.app.view ;
 
 
 import java.awt.BorderLayout;
@@ -8,9 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.epsi.book.application.DAO.GoogleBookDAO;
-import com.epsi.book.application.metier.Book;
-import com.epsi.book.application.traitement.Bibliotheque;
+import com.epsi.book.app.action.LibraryBook;
+import com.epsi.book.app.dao.GoogleBookDAO;
+import com.epsi.book.app.work.Book;
 
 import javax.swing.JLabel;
 import java.awt.Color;
@@ -21,11 +21,11 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.awt.event.ActionEvent;
 
-public class Accueil extends JFrame {
+public class HomeUi extends JFrame {
 
 	private JPanel contentPane;
 
-	private static Bibliotheque biblio;
+	private static LibraryBook biblio;
 
 	/**
 	 * Launch the application.
@@ -37,10 +37,10 @@ public class Accueil extends JFrame {
 	/**
 	 * Create the frame on the start of application
 	 */
-	public Accueil(Boolean prod) {
+	public HomeUi(Boolean prod) {
 		if(prod == true) {
 			try {
-				biblio= Bibliotheque.getInstance();
+				biblio= LibraryBook.getInstance();
 				
 			
 				
@@ -49,7 +49,7 @@ public class Accueil extends JFrame {
 				for(Book b:biblio.getBooks()) {
 					System.out.println(b.toString());
 				}
-				Accueil frame = new Accueil();
+				HomeUi frame = new HomeUi();
 				frame.setVisible(true);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -57,7 +57,7 @@ public class Accueil extends JFrame {
 			} 
 		}
 	}
-	public Accueil() {
+	public HomeUi() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 552, 403);
@@ -76,7 +76,7 @@ public class Accueil extends JFrame {
 		JButton btnAjouterLivre = new JButton("Ajouter Livre");
 		btnAjouterLivre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AjouterLivre fen= new AjouterLivre();
+				AddBookUi fen= new AddBookUi();
 				fen.setVisible(true);
 				setVisible(false);
 				
@@ -88,7 +88,7 @@ public class Accueil extends JFrame {
 		JButton btnAjouterLivreAvec = new JButton("Ajouter Livre avec ISBN");
 		btnAjouterLivreAvec.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AjouterLivreISBN fen= new AjouterLivreISBN();
+				AddBookIsbnUi fen= new AddBookIsbnUi();
 				fen.setVisible(true);
 				setVisible(false);
 			}
@@ -99,7 +99,7 @@ public class Accueil extends JFrame {
 		JButton btnSupprimerLivre = new JButton("Retirer Livre");
 		btnSupprimerLivre.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RetirerLivre fen= new RetirerLivre();
+				GetBookUi fen= new GetBookUi();
 				fen.setVisible(true);
 				setVisible(false);
 			}
@@ -110,7 +110,7 @@ public class Accueil extends JFrame {
 		JButton btnRetournerLivres = new JButton("Retourner Livre");
 		btnRetournerLivres.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RetournerLivre fen= new RetournerLivre();
+				ReturnBookUi fen= new ReturnBookUi();
 				fen.setVisible(true);
 				setVisible(false);
 			}
@@ -121,9 +121,9 @@ public class Accueil extends JFrame {
 		JButton btnRechercherLivre = new JButton("Rechercher Livre");
 		btnRechercherLivre.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				RechercheLivre fenetreRechercher = null;
+				SearchBookUi fenetreRechercher = null;
 				try {
-					fenetreRechercher = new RechercheLivre();
+					fenetreRechercher = new SearchBookUi();
 				} catch (ClassNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
@@ -139,7 +139,7 @@ public class Accueil extends JFrame {
 		btnListerLesLivres.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e)
 			{
-				ListerLivreDispo fen= new ListerLivreDispo();
+				ListBookDispUi fen= new ListBookDispUi();
 				fen.setVisible(true);
 				setVisible(false);
 				
@@ -151,7 +151,7 @@ public class Accueil extends JFrame {
 		JButton btnListerLesLivres_1 = new JButton("Lister les Livres empruntés");
 		btnListerLesLivres_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ListLivreNonDispo fen= new ListLivreNonDispo();
+				ListBookNoDispUi fen= new ListBookNoDispUi();
 				fen.setVisible(true);
 				setVisible(false);
 			}
